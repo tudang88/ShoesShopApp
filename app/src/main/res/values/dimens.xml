@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <dimen name="default_margin">16dp</dimen>
     <dimen name="vertical_margin">16dp</dimen>
     <dimen name="horizontal_margin">8dp</dimen>
-    <dimen name="button_padding">16dp</dimen>
+    <dimen name="button_padding_normal">16dp</dimen>
+    <dimen name="button_padding_large">30dp</dimen>
     <dimen name="button_text_size">18sp</dimen>
     <dimen name="title_text_big_size">54sp</dimen>
+    <dimen name="label_default_text_size">32dp</dimen>
     <dimen name="image_header_height">200dp</dimen>
     <dimen name="button_horizontal_margin">24dp</dimen>
 </resources>

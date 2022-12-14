@@ -20,8 +20,10 @@
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:fontFamily">@font/roboto_bold</item>
-        <item name="android:background">@drawable/button_round_green</item>
+        <item name="android:background">@drawable/button_round_default</item>
         <item name="android:textColor">@android:color/white</item>
+        <item name="android:paddingLeft">@dimen/button_padding_large</item>
+        <item name="android:paddingRight">@dimen/button_padding_large</item>
     </style>
 
 </resources>

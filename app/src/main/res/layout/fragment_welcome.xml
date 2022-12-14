@@ -5,12 +5,12 @@
     tools:context="com.udacity.shoestore.screens.welcome.WelcomeFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/loginConstraint"
+        android:id="@+id/welcomeConstraint"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
         <ImageView
-            android:id="@+id/imageView"
+            android:id="@+id/logoImage"
             android:layout_width="0dp"
             android:layout_height="@dimen/image_header_height"
             android:layout_marginStart="@dimen/horizontal_margin"
@@ -22,17 +22,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/logo" />
-
-        <Button
-            android:id="@+id/openInstructionButton"
-            style="@style/button_green"
-            android:layout_marginTop="40dp"
-            android:layout_marginEnd="@dimen/button_horizontal_margin"
-            android:text="Go to Instruction"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/guideline5" />
 
         <TextView
             android:id="@+id/welcomeTitle"
@@ -59,6 +48,18 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/welcomeTitle" />
+
+        <Button
+            android:id="@+id/openInstructionButton"
+            style="@style/button_green"
+            android:layout_marginTop="40dp"
+            android:layout_marginEnd="@dimen/button_horizontal_margin"
+            android:text="@string/go_to_instruction"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/guideline5" />
+
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline4"
