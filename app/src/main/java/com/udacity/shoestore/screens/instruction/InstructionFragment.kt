@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.databinding.DataBindingUtil
+import androidx.navigation.findNavController
 import androidx.viewpager2.widget.ViewPager2
 import com.udacity.shoestore.R
 import com.udacity.shoestore.databinding.FragmentInstructionBinding
@@ -29,6 +30,11 @@ class InstructionFragment : Fragment() {
         // Inflate the layout for this fragment
         val binding: FragmentInstructionBinding =
             DataBindingUtil.inflate(inflater, R.layout.fragment_instruction, container, false)
+        //navigate to Product List Page
+        binding.goShoppingButton.setOnClickListener { view: View ->
+            view.findNavController()
+                .navigate(InstructionFragmentDirections.actionInstructionFragmentToProductListFragment())
+        }
         // get viewpager
         viewPager2 = binding.viewPagers
         iv1 = binding.iv1
@@ -64,18 +70,18 @@ class InstructionFragment : Fragment() {
     }
 
     private fun changeColor() {
-        when(viewPager2.currentItem) {
-            0-> {
+        when (viewPager2.currentItem) {
+            0 -> {
                 iv1.setBackgroundColor(resources.getColor(R.color.active))
                 iv2.setBackgroundColor(resources.getColor(R.color.grey))
                 iv3.setBackgroundColor(resources.getColor(R.color.grey))
             }
-            1-> {
+            1 -> {
                 iv1.setBackgroundColor(resources.getColor(R.color.grey))
                 iv2.setBackgroundColor(resources.getColor(R.color.active))
                 iv3.setBackgroundColor(resources.getColor(R.color.grey))
             }
-            2-> {
+            2 -> {
                 iv1.setBackgroundColor(resources.getColor(R.color.grey))
                 iv2.setBackgroundColor(resources.getColor(R.color.grey))
                 iv3.setBackgroundColor(resources.getColor(R.color.active))
