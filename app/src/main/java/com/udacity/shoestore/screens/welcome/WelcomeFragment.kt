@@ -1,12 +1,11 @@
 package com.udacity.shoestore.screens.welcome
 
 import android.os.Bundle
+import android.view.*
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import com.udacity.shoestore.R
 import com.udacity.shoestore.databinding.FragmentWelcomeBinding
 
@@ -26,8 +25,18 @@ class WelcomeFragment : Fragment() {
         binding.openInstructionButton.setOnClickListener{view :View ->
             view.findNavController().navigate(WelcomeFragmentDirections.actionWelcomeFragmentToInstructionFragment())
         }
+        //enable option menu
+        setHasOptionsMenu(true)
         return binding.root
     }
 
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        super.onCreateOptionsMenu(menu, inflater)
+        inflater.inflate(R.menu.logout_menu, menu)
+    }
 
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        findNavController().navigate(WelcomeFragmentDirections.actionWelcomeFragmentToLoginFragment())
+        return super.onOptionsItemSelected(item)
+    }
 }
