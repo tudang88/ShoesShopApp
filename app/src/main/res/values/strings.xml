@@ -1,8 +1,14 @@
 <resources>
     <string name="app_name">ShoeStore</string>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="welcome_title">Welcome to RapidMove</string>
     <string name="go_to_instruction">Next &#8594;</string>
     <string name="go_shopping">Your Store &#8594;</string>
+    <string name="product_size">Size: %f cm</string>
+    <string name="Company_name">Maker: %s</string>
+    <string name="bio">Satoshi Nakamoto is the name used by the presumed pseudonymous person or persons who developed bitcoin, authored the bitcoin white paper, and created and deployed bitcoin\'s original reference implementation. As part of the implementation, Nakamoto also devised the first blockchain database. Nakamoto was active in the development of bitcoin up until December 2010.There has been widespread speculation about Satoshi Nakamoto\'s true identity, with a variety of people posited as the person or persons behind the name. Though Nakamoto\'s name is Japanese, and he stated in 2012 that he was a man living in Japan, most of the speculation has involved software and cryptography experts in the United States or Europe Nakamoto stated that work on the writing of the code for Bitcoin began in 2007. On 18 August 2008, he or a colleague registered the domain name bitcoin.org, and created a web site at that address. On 31 October, Nakamoto published a white paper on the cryptography mailing list at metzdowd.com describing a digital cryptocurrency, titled "Bitcoin: A Peer-to-Peer Electronic Cash System".
+On 9 January 2009, Nakamoto released version 0.1 of the Bitcoin software on SourceForge, and launched the network by defining the genesis block of bitcoin (block number 0), which had a reward of 50 bitcoins. Embedded in the coinbase transaction of this block is the text: "The Times 03/Jan/2009 Chancellor on brink of second bailout for banks", citing a headline in the UK newspaper The Times published on that date. This note has been interpreted as both a timestamp and a derisive comment on the alleged instability caused by fractional-reserve banking.
+Nakamoto continued to collaborate with other developers on the bitcoin software until mid-2010, making all modifications to the source code himself. He then gave control of the source code repository and network alert key to Gavin Andresen, transferred several related domains to various prominent members of the bitcoin community, and stopped his recognized involvement in the project.[citation needed]
+Nakamoto owns between 750,000 and 1,100,000 bitcoin. In November 2021, when Bitcoin hit its still-highest value of over US$68,000, that would have made his net worth up to US$73 billion, which would have made him the 15th-richest person in the world at the time. </string>
+
 </resources>

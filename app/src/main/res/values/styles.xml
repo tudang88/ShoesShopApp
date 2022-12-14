@@ -26,4 +26,16 @@
         <item name="android:paddingRight">@dimen/button_padding_large</item>
     </style>
 
+    <style name="product_name_label">
+        <item name="android:fontFamily">@font/roboto</item>
+        <item name="android:textColor">@color/purple_200</item>
+        <item name="android:textSize">@dimen/label_default_text_size</item>
+    </style>
+
+    <style name="detail_info_text">
+        <item name="android:fontFamily">@font/roboto</item>
+        <item name="android:textColor">@color/purple_500</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
 </resources>
