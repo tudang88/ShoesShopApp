@@ -10,6 +10,7 @@ import android.widget.LinearLayout
 import android.widget.ScrollView
 import android.widget.TextView
 import androidx.databinding.DataBindingUtil
+import androidx.navigation.findNavController
 import androidx.viewpager2.widget.ViewPager2
 import com.udacity.shoestore.R
 import com.udacity.shoestore.databinding.FragmentProductListBinding
@@ -100,6 +101,9 @@ class ProductListFragment : Fragment() {
         // Inflate the layout for this fragment
         val binding: FragmentProductListBinding =
             DataBindingUtil.inflate(inflater, R.layout.fragment_product_list, container, false)
+        binding.fab.setOnClickListener{
+            it.findNavController().navigate(ProductListFragmentDirections.actionProductListFragmentToAddProductFragment())
+        }
         // setting view pager
         prdScrollList = binding.productScroll
         scrollLinearLayout = binding.productListBoard

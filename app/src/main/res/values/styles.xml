@@ -16,7 +16,7 @@
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
-    <style name="button_green">
+    <style name="button_positive">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:fontFamily">@font/roboto_bold</item>
@@ -25,7 +25,15 @@
         <item name="android:paddingLeft">@dimen/button_padding_large</item>
         <item name="android:paddingRight">@dimen/button_padding_large</item>
     </style>
-
+    <style name="button_negative">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:fontFamily">@font/roboto_bold</item>
+        <item name="android:background">@drawable/button_round_negative</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:paddingLeft">@dimen/button_padding_large</item>
+        <item name="android:paddingRight">@dimen/button_padding_large</item>
+    </style>
     <style name="product_name_label">
         <item name="android:fontFamily">@font/roboto</item>
         <item name="android:textColor">@color/purple_200</item>

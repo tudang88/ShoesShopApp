@@ -84,18 +84,20 @@
     <TextView
         android:id="@+id/prd_size_text"
         style="@style/detail_info_text"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/default_margin"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/vertical_guide1"
         app:layout_constraintTop_toBottomOf="@id/prd_name_text" />
 
     <TextView
         android:id="@+id/prd_company_text"
         style="@style/detail_info_text"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/default_margin"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/vertical_guide1"
         app:layout_constraintTop_toBottomOf="@+id/prd_size_text" />
 
