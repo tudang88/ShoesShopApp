@@ -23,13 +23,13 @@ class ProductListViewModel : ViewModel() {
             )
         ),
         Shoe(
-            "Nike Sport 2",
+            "Adidas Sport 2",
             26.0,
-            "Nike Co.ltd",
+            "Adidas Co.ltd",
             "The best selection for outdoor activities or hi-intensive training",
             mutableListOf(
-                ImageResource(resId = R.drawable.shoes1),
                 ImageResource(resId = R.drawable.shoes2),
+                ImageResource(resId = R.drawable.shoes1),
                 ImageResource(resId = R.drawable.shoes3),
                 ImageResource(resId = R.drawable.shoes4),
                 ImageResource(resId = R.drawable.shoes5),
@@ -45,9 +45,9 @@ class ProductListViewModel : ViewModel() {
             "Nike Co.ltd",
             "The best selection for outdoor activities or hi-intensive training",
             mutableListOf(
+                ImageResource(resId = R.drawable.shoes3),
                 ImageResource(resId = R.drawable.shoes1),
                 ImageResource(resId = R.drawable.shoes2),
-                ImageResource(resId = R.drawable.shoes3),
                 ImageResource(resId = R.drawable.shoes4),
                 ImageResource(resId = R.drawable.shoes5),
                 ImageResource(resId = R.drawable.shoes6),
@@ -56,15 +56,15 @@ class ProductListViewModel : ViewModel() {
                 ImageResource(resId = R.drawable.shoes9)
             )
         ), Shoe(
-            "Nike Sport 4",
+            "Adidas Sport 4",
             26.0,
-            "Nike Co.ltd",
+            "Adidas Co.ltd",
             "The best selection for outdoor activities or hi-intensive training",
             mutableListOf(
+                ImageResource(resId = R.drawable.shoes4),
+                ImageResource(resId = R.drawable.shoes3),
                 ImageResource(resId = R.drawable.shoes1),
                 ImageResource(resId = R.drawable.shoes2),
-                ImageResource(resId = R.drawable.shoes3),
-                ImageResource(resId = R.drawable.shoes4),
                 ImageResource(resId = R.drawable.shoes5),
                 ImageResource(resId = R.drawable.shoes6),
                 ImageResource(resId = R.drawable.shoes7),
