@@ -81,6 +81,9 @@ class AddProductFragment : Fragment() {
         return binding.root
     }
 
+    /**
+     * handle viewPagers callback to update indicator color
+     */
     private fun configIndicator(
         viewPager: ViewPager2,
         iv1: ImageView,
@@ -110,6 +113,9 @@ class AddProductFragment : Fragment() {
         getContent.launch("image/*")
     }
 
+    /**
+     * due to StartActivityForResult() deprecated, so get Image content via ActivityResultContracts
+     */
     private val getContent = registerForActivityResult(ActivityResultContracts.GetContent()) {
         viewModel.uploadImage(it)
     }
