@@ -11,7 +11,7 @@
         android:label="@string/app_name"
         tools:layout="@layout/fragment_login">
         <action
-            android:id="@+id/action_loginFragment_to_welcomeFragment2"
+            android:id="@+id/action_loginFragment_to_welcomeFragment"
             app:destination="@id/welcomeFragment" />
     </fragment>
     <fragment

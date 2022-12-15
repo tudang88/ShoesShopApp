@@ -4,6 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.udacity.shoestore.screens.login.LoginFragment">
 
+    <data>
+        <variable
+            name="loginViewModel"
+            type="com.udacity.shoestore.models.LoginViewModel" />
+    </data>
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/loginConstraint"
         android:layout_width="match_parent"
@@ -40,6 +45,7 @@
             android:layout_marginStart="@dimen/horizontal_margin"
             android:ems="10"
             android:inputType="textEmailAddress"
+            android:onTextChanged="@{loginViewModel::onUserNameEditChange}"
             app:layout_constraintBaseline_toBaselineOf="@+id/emailText"
             app:layout_constraintStart_toStartOf="@+id/guideline2" />
 
@@ -60,6 +66,7 @@
             android:layout_marginStart="@dimen/horizontal_margin"
             android:ems="10"
             android:inputType="textPassword"
+            android:onTextChanged="@{loginViewModel::onPasswordEditChange}"
             app:layout_constraintBaseline_toBaselineOf="@+id/passwordText"
             app:layout_constraintStart_toStartOf="@+id/guideline2" />
 
@@ -69,6 +76,7 @@
             android:layout_marginTop="40dp"
             android:layout_marginEnd="@dimen/button_horizontal_margin"
             android:text="Register"
+            android:onClick="@{() -> loginViewModel.authentication()}"
             app:layout_constraintEnd_toStartOf="@+id/guideline3"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
@@ -81,6 +89,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/button_horizontal_margin"
             android:text="Login"
+            android:onClick="@{() -> loginViewModel.authentication()}"
             app:layout_constraintBaseline_toBaselineOf="@+id/registerButton"
             app:layout_constraintStart_toStartOf="@+id/guideline3" />
 

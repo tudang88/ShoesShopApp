@@ -3,6 +3,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <data>
+        <variable
+            name="addProductViewModel"
+            type="com.udacity.shoestore.models.AddProductViewModel" />
+    </data>
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -23,6 +28,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/default_margin"
+            android:onTextChanged="@{addProductViewModel::onProductNameChange}"
             android:hint="@string/hint_product_name"
             android:inputType="textPersonName|textImeMultiLine"
             app:layout_constraintEnd_toEndOf="parent"
@@ -104,6 +110,7 @@
             android:layout_margin="@dimen/default_margin"
             android:hint="@string/hint_product_size"
             android:inputType="textPersonName|textImeMultiLine"
+            android:onTextChanged="@{addProductViewModel::onProductSizeChange}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@+id/vertical_guide1"
             app:layout_constraintTop_toBottomOf="@id/prd_name_text" />
@@ -116,6 +123,7 @@
             android:layout_margin="@dimen/default_margin"
             android:hint="@string/hint_company_name"
             android:inputType="textPersonName|textImeMultiLine"
+            android:onTextChanged="@{addProductViewModel::onProductCompanyChange}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@+id/vertical_guide1"
             app:layout_constraintTop_toBottomOf="@+id/prd_size_text" />
@@ -135,7 +143,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/hint_description"
-                android:inputType="textImeMultiLine"
+                android:inputType="textPersonName|textImeMultiLine"
+                android:onTextChanged="@{addProductViewModel::onProductDescriptionChange}"
                 tools:text="@string/bio" />
         </ScrollView>
 

@@ -34,6 +34,8 @@ class AddProductFragment : Fragment() {
             DataBindingUtil.inflate(inflater, R.layout.fragment_add_product, container, false)
         // init view model
         viewModel = ViewModelProvider(this).get(AddProductViewModel::class.java)
+        // binding variable in layout to view model
+        binding.prdComponent.addProductViewModel = viewModel
         // upload button
         binding.prdComponent.uploadButton.setOnClickListener {
             uploadImageFromDevice()
@@ -54,11 +56,6 @@ class AddProductFragment : Fragment() {
             binding.prdComponent.iv2,
             binding.prdComponent.iv3
         )
-        // get All editText for later use
-        val nameEdit = binding.prdComponent.prdNameText
-        val sizeEdit = binding.prdComponent.prdSizeText
-        val companyEdit = binding.prdComponent.prdCompanyText
-        val descriptionEdit = binding.prdComponent.prdDescriptionText
         // button cancel
         binding.cancelButton.setOnClickListener { view: View ->
             view.findNavController()
@@ -66,11 +63,6 @@ class AddProductFragment : Fragment() {
         }
         // button save
         binding.saveButton.setOnClickListener { view ->
-            // save product info before navigate back product list
-            viewModel.updateProductInfo(
-                nameEdit.text.toString(), sizeEdit.text.toString(),
-                companyEdit.text.toString(), descriptionEdit.text.toString()
-            )
             sharedViewModel.addNewProduct(viewModel.productEntry)
             view.findNavController()
                 .navigate(AddProductFragmentDirections.actionAddProductFragmentToProductListFragment())

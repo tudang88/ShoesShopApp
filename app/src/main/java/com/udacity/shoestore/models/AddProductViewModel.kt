@@ -17,16 +17,34 @@ class AddProductViewModel : ViewModel() {
     private var _description: String = ""
     private val _imgList = mutableListOf<ImageResource>()
 
-    fun updateProductInfo(name: String, size: String, company: String, description: String) {
-        _productName = name
+    /**
+     * this function will be bound from layout
+     */
+    fun onProductNameChange(name: CharSequence, start: Int, before: Int, count: Int) {
+        _productName = name.toString()
+    }
+    /**
+     * this function will be bound from layout
+     */
+    fun onProductSizeChange(size: CharSequence, start: Int, before: Int, count: Int) {
         _productSize = try {
-            size.toDouble()
+            size.toString().toDouble()
         } catch (e: java.lang.Exception) {
             e.printStackTrace()
             0.0
         }
-        _productMaker = company
-        _description = description
+    }
+    /**
+     * this function will be bound from layout
+     */
+    fun onProductCompanyChange(company: CharSequence, start: Int, before: Int, count: Int) {
+        _productMaker = company.toString()
+    }
+    /**
+     * this function will be bound from layout
+     */
+    fun onProductDescriptionChange(description: CharSequence, start: Int, before: Int, count: Int) {
+        _description = description.toString()
     }
 
     // add image from local device

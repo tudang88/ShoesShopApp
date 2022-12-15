@@ -31,6 +31,8 @@ class LoginFragment : Fragment() {
             DataBindingUtil.inflate(inflater, R.layout.fragment_login, container, false)
         viewModel = ViewModelProvider(this).get(LoginViewModel::class.java)
 
+        // binding viewModel instance with variable in layout
+        binding.loginViewModel = viewModel
         viewModel.authFinishedEvent.observe(viewLifecycleOwner, Observer { result ->
             if (result) {
                 loginSuccessful()
@@ -38,19 +40,19 @@ class LoginFragment : Fragment() {
                 loginFailed()
             }
         })
-        // binding OnClick
-        binding.loginButton.setOnClickListener {
-            viewModel.authentication(
-                binding.emailEditText.text.toString(),
-                binding.pwEditText.text.toString()
-            )
-        }
-        binding.registerButton.setOnClickListener {
-            viewModel.authentication(
-                binding.emailEditText.text.toString(),
-                binding.pwEditText.text.toString()
-            )
-        }
+//        // binding OnClick
+//        binding.loginButton.setOnClickListener {
+//            viewModel.authentication(
+//                binding.emailEditText.text.toString(),
+//                binding.pwEditText.text.toString()
+//            )
+//        }
+//        binding.registerButton.setOnClickListener {
+//            viewModel.authentication(
+//                binding.emailEditText.text.toString(),
+//                binding.pwEditText.text.toString()
+//            )
+//        }
         return binding.root
     }
 
@@ -60,7 +62,7 @@ class LoginFragment : Fragment() {
      */
     private fun loginSuccessful() {
         val action =
-            LoginFragmentDirections.actionLoginFragmentToWelcomeFragment2(viewModel.userName.value?:"Anonymous")
+            LoginFragmentDirections.actionLoginFragmentToWelcomeFragment(viewModel.userName.value?:"Anonymous")
         findNavController().navigate(action)
     }
 
