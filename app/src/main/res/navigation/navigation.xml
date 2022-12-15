@@ -63,6 +63,9 @@
         <action
             android:id="@+id/action_addProductFragment_to_productListFragment"
             app:destination="@id/productListFragment"
+            app:enterAnim="@anim/fade_in"
+            app:exitAnim="@anim/slide_out_to_bottom"
+            app:popEnterAnim="@anim/slide_out_to_bottom"
             app:popUpTo="@id/instructionFragment"
             app:popUpToInclusive="false" />
     </fragment>
