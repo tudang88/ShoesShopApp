@@ -1,29 +1,27 @@
 package com.udacity.shoestore.models
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
 class LoginViewModel : ViewModel() {
-    var _userName = MutableLiveData<String>()
-
-    //    private val _userName = MutableLiveData<String>()
-    val userName: LiveData<String>
+    private var _userName: String = ""
+    val userName: String
         get() = _userName
     private var _password: String = ""
     private val _authFinishedEvent = MutableLiveData<Boolean>()
     val authFinishedEvent: LiveData<Boolean>
         get() = _authFinishedEvent
-
-    init {
-        _userName.value = ""
-    }
+    private val _loginFailedEvent = MutableLiveData<Boolean>()
+    val loginFailedEvent: LiveData<Boolean>
+        get() = _loginFailedEvent
 
     /**
      * this function will be binding from layout
      */
     fun onUserNameEditChange(email: CharSequence, start: Int, before: Int, count: Int) {
-        _userName.value = email.toString()
+        _userName = email.toString()
     }
 
     /**
@@ -37,13 +35,18 @@ class LoginViewModel : ViewModel() {
      * The authentication procedure will connect to backend database
      */
     fun authentication() {
-        // Todo confirm user and pass word
-        if (connectUserDataBase(_userName.value ?: "", _password)) {
+        Log.i("LoginViewModel", "call authentication()")
+        if (connectUserDataBase(_userName, _password)) {
             _authFinishedEvent.postValue(true)
         } else {
-            _authFinishedEvent.postValue(false)
+            _loginFailedEvent.postValue(true)
         }
 
+    }
+
+    fun clearLoginEvent() {
+        _authFinishedEvent.value = false
+        _loginFailedEvent.value = false
     }
 
     private fun connectUserDataBase(userName: String, password: String): Boolean {

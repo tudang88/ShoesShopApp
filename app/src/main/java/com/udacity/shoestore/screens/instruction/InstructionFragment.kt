@@ -6,7 +6,6 @@ import androidx.fragment.app.Fragment
 import android.widget.ImageView
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.findNavController
-import androidx.navigation.fragment.findNavController
 import androidx.viewpager2.widget.ViewPager2
 import com.udacity.shoestore.R
 import com.udacity.shoestore.adapter.InstructionPageAdapter
@@ -26,7 +25,7 @@ class InstructionFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
         val binding: FragmentInstructionBinding =
             DataBindingUtil.inflate(inflater, R.layout.fragment_instruction, container, false)
@@ -66,19 +65,7 @@ class InstructionFragment : Fragment() {
             }
 
         })
-        //enable option menu
-        setHasOptionsMenu(true)
         return binding.root
-    }
-
-    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        super.onCreateOptionsMenu(menu, inflater)
-        inflater.inflate(R.menu.logout_menu, menu)
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        findNavController().navigate(InstructionFragmentDirections.actionInstructionFragmentToLoginFragment())
-        return super.onOptionsItemSelected(item)
     }
 
     private fun changeIndicatorColor() {

@@ -1,6 +1,7 @@
 package com.udacity.shoestore.screens.login
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -22,37 +23,30 @@ import com.udacity.shoestore.models.LoginViewModel
 class LoginFragment : Fragment() {
 
     private lateinit var viewModel: LoginViewModel
+    private lateinit var binding: FragmentLoginBinding
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
-        val binding: FragmentLoginBinding =
+        binding =
             DataBindingUtil.inflate(inflater, R.layout.fragment_login, container, false)
         viewModel = ViewModelProvider(this).get(LoginViewModel::class.java)
-
+        binding.lifecycleOwner = this
         // binding viewModel instance with variable in layout
         binding.loginViewModel = viewModel
         viewModel.authFinishedEvent.observe(viewLifecycleOwner, Observer { result ->
             if (result) {
                 loginSuccessful()
-            } else {
-                loginFailed()
+                viewModel.clearLoginEvent()
             }
         })
-//        // binding OnClick
-//        binding.loginButton.setOnClickListener {
-//            viewModel.authentication(
-//                binding.emailEditText.text.toString(),
-//                binding.pwEditText.text.toString()
-//            )
-//        }
-//        binding.registerButton.setOnClickListener {
-//            viewModel.authentication(
-//                binding.emailEditText.text.toString(),
-//                binding.pwEditText.text.toString()
-//            )
-//        }
+        viewModel.loginFailedEvent.observe(viewLifecycleOwner, Observer { result ->
+            if (result) {
+                loginFailed()
+                viewModel.clearLoginEvent()
+            }
+        })
         return binding.root
     }
 
@@ -61,8 +55,9 @@ class LoginFragment : Fragment() {
      * transition to Welcome
      */
     private fun loginSuccessful() {
+        Log.i("LoginFragment", "loginSuccessful")
         val action =
-            LoginFragmentDirections.actionLoginFragmentToWelcomeFragment(viewModel.userName.value?:"Anonymous")
+            LoginFragmentDirections.actionLoginFragmentToWelcomeFragment(viewModel.userName)
         findNavController().navigate(action)
     }
 

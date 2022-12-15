@@ -21,7 +21,7 @@ class WelcomeFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
         val binding: FragmentWelcomeBinding = DataBindingUtil.inflate(layoutInflater, R.layout.fragment_welcome, container, false)
         val userNameArgs by navArgs<WelcomeFragmentArgs>()
@@ -30,18 +30,6 @@ class WelcomeFragment : Fragment() {
         binding.openInstructionButton.setOnClickListener{view :View ->
             view.findNavController().navigate(WelcomeFragmentDirections.actionWelcomeFragmentToInstructionFragment())
         }
-        //enable option menu
-        setHasOptionsMenu(true)
         return binding.root
-    }
-
-    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        super.onCreateOptionsMenu(menu, inflater)
-        inflater.inflate(R.menu.logout_menu, menu)
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        findNavController().navigate(WelcomeFragmentDirections.actionWelcomeFragmentToLoginFragment())
-        return super.onOptionsItemSelected(item)
     }
 }

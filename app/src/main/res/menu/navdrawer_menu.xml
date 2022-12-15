@@ -6,11 +6,6 @@
         android:icon="@drawable/login"
         android:title="Login" />
     <item
-        android:id="@+id/logoutMenu"
-        android:icon="@drawable/logout"
-        android:visible="false"
-        android:title="Logout" />
-    <item
         android:id="@+id/instructionFragment"
         android:icon="@drawable/human_welcome"
         android:title="Instruction" />

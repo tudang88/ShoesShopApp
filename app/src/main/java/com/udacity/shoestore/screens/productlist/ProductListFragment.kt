@@ -1,6 +1,7 @@
 package com.udacity.shoestore.screens.productlist
 
 import android.os.Bundle
+import android.util.Log
 import android.view.*
 import androidx.fragment.app.Fragment
 import android.widget.ImageView
@@ -52,10 +53,18 @@ class ProductListFragment : Fragment() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        findNavController().navigate(ProductListFragmentDirections.actionProductListFragmentToLoginFragment())
+        when(item.itemId) {
+            R.id.logout -> {
+                Log.i("ProductListFragment", "Press Logout icon")
+                findNavController().navigate(ProductListFragmentDirections.actionProductListFragmentToLoginFragment())
+            }
+        }
         return super.onOptionsItemSelected(item)
     }
 
+    /**
+     * gen product layout row by row
+     */
     private fun genProductList(listProduct: MutableList<Shoe>) {
         for (item in listProduct) {
             // create layout and add to linear layout on scroll

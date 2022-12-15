@@ -28,7 +28,7 @@ class AddProductFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
         val binding: FragmentAddProductBinding =
             DataBindingUtil.inflate(inflater, R.layout.fragment_add_product, container, false)
@@ -67,9 +67,6 @@ class AddProductFragment : Fragment() {
             view.findNavController()
                 .navigate(AddProductFragmentDirections.actionAddProductFragmentToProductListFragment())
         }
-
-        // enable option menu
-        setHasOptionsMenu(true)
         return binding.root
     }
 
@@ -112,16 +109,9 @@ class AddProductFragment : Fragment() {
         viewModel.uploadImage(it)
     }
 
-    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        super.onCreateOptionsMenu(menu, inflater)
-        inflater.inflate(R.menu.logout_menu, menu)
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        findNavController().navigate(AddProductFragmentDirections.actionAddProductFragmentToLoginFragment())
-        return super.onOptionsItemSelected(item)
-    }
-
+    /**
+     * change color of indicator regarding to current viewed image on ViewPager
+     */
     private fun changeIndicatorColor(index: Int, iv1: ImageView, iv2: ImageView, iv3: ImageView) {
         when (index % 3) {
             0 -> {
