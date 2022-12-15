@@ -5,7 +5,7 @@
         android:id="@+id/logout"
         android:enabled="true"
         android:icon="@drawable/logout"
-        android:title="Logout"
+        android:title="@string/logout"
         android:visible="true"
         app:showAsAction="ifRoom"/>
 </menu>

@@ -14,4 +14,5 @@
     <string name="hint_product_size">Input product size here (cm)</string>
     <string name="hint_company_name">Input the maker name here</string>
     <string name="hint_description">Input description of product here</string>
+    <string name="logout">Logout</string>
 </resources>
