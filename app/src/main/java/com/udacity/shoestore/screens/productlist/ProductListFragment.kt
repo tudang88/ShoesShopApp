@@ -8,104 +8,55 @@ import android.widget.LinearLayout
 import android.widget.ScrollView
 import android.widget.TextView
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.viewpager2.widget.ViewPager2
 import com.udacity.shoestore.R
+import com.udacity.shoestore.adapter.ImageViewPagerAdapter
 import com.udacity.shoestore.databinding.FragmentProductListBinding
+import com.udacity.shoestore.models.ProductListViewModel
 import com.udacity.shoestore.models.Shoe
 
-/**
- * A simple [Fragment] subclass.
- * Use the [ProductListFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class ProductListFragment : Fragment() {
     private lateinit var scrollLinearLayout: LinearLayout
     private lateinit var prdScrollList: ScrollView
-    private val listProduct = mutableListOf(
-        Shoe(
-            "Nike Sport 1",
-            26.0,
-            "Nike Co.ltd",
-            "The best selection for outdoor activities or hi-intensive training",
-            mutableListOf(
-                R.drawable.shoes1,
-                R.drawable.shoes2,
-                R.drawable.shoes3,
-                R.drawable.shoes4,
-                R.drawable.shoes5,
-                R.drawable.shoes6,
-                R.drawable.shoes7,
-                R.drawable.shoes8,
-                R.drawable.shoes9
-            )
-        ),
-        Shoe(
-            "Nike Sport 2",
-            26.0,
-            "Nike Co.ltd",
-            "The best selection for outdoor activities or hi-intensive training",
-            mutableListOf(
-                R.drawable.shoes1,
-                R.drawable.shoes2,
-                R.drawable.shoes3,
-                R.drawable.shoes4,
-                R.drawable.shoes5,
-                R.drawable.shoes6,
-                R.drawable.shoes7,
-                R.drawable.shoes8,
-                R.drawable.shoes9
-            )
-        ),
-        Shoe(
-            "Nike Sport 3",
-            26.0,
-            "Nike Co.ltd",
-            "The best selection for outdoor activities or hi-intensive training",
-            mutableListOf(
-                R.drawable.shoes1,
-                R.drawable.shoes2,
-                R.drawable.shoes3,
-                R.drawable.shoes4,
-                R.drawable.shoes5,
-                R.drawable.shoes6,
-                R.drawable.shoes7,
-                R.drawable.shoes8,
-                R.drawable.shoes9
-            )
-        ), Shoe(
-            "Nike Sport 4",
-            26.0,
-            "Nike Co.ltd",
-            "The best selection for outdoor activities or hi-intensive training",
-            mutableListOf(
-                R.drawable.shoes1,
-                R.drawable.shoes2,
-                R.drawable.shoes3,
-                R.drawable.shoes4,
-                R.drawable.shoes5,
-                R.drawable.shoes6,
-                R.drawable.shoes7,
-                R.drawable.shoes8,
-                R.drawable.shoes9
-            )
-        )
-    )
 
+    // use share ViewModel with activity lifecycle
+    private val shareViewModel: ProductListViewModel by activityViewModels()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
         val binding: FragmentProductListBinding =
             DataBindingUtil.inflate(inflater, R.layout.fragment_product_list, container, false)
-        binding.fab.setOnClickListener{
-            it.findNavController().navigate(ProductListFragmentDirections.actionProductListFragmentToAddProductFragment())
+        binding.fab.setOnClickListener {
+            it.findNavController()
+                .navigate(ProductListFragmentDirections.actionProductListFragmentToAddProductFragment())
         }
         // setting view pager
         prdScrollList = binding.productScroll
         scrollLinearLayout = binding.productListBoard
+        // draw product list base on data from model
+        genProductList(shareViewModel.listProduct)
+        // enable option menu
+        setHasOptionsMenu(true)
+        return binding.root
+    }
+
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        super.onCreateOptionsMenu(menu, inflater)
+        inflater.inflate(R.menu.logout_menu, menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        findNavController().navigate(ProductListFragmentDirections.actionProductListFragmentToLoginFragment())
+        return super.onOptionsItemSelected(item)
+    }
+
+    private fun genProductList(listProduct: MutableList<Shoe>) {
         for (item in listProduct) {
             // create layout and add to linear layout on scroll
             val row: View = layoutInflater.inflate(R.layout.product_items, null, false)
@@ -117,14 +68,16 @@ class ProductListFragment : Fragment() {
             size.text = resources.getString(R.string.product_size, item.size)
             company.text = resources.getString(R.string.Company_name, item.company)
             description.text = item.description
-            scrollLinearLayout.addView(row)
+            // update product image to viewpager
             val viewPager: ViewPager2 = row.findViewById(R.id.prd_viewpager)
-            val adapter = ProductPageAdapter(item.images.shuffled())
+            val adapter = ImageViewPagerAdapter(item.images)
             viewPager.adapter = adapter
+            // add product row
+            scrollLinearLayout.addView(row)
+            // setting for update indicator
             val iv1: ImageView = row.findViewById(R.id.iv1)
             val iv2: ImageView = row.findViewById(R.id.iv2)
             val iv3: ImageView = row.findViewById(R.id.iv3)
-
             viewPager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
                 override fun onPageScrolled(
                     position: Int,
@@ -140,22 +93,7 @@ class ProductListFragment : Fragment() {
                     changeIndicatorColor(viewPager.currentItem, iv1, iv2, iv3)
                 }
             })
-
         }
-
-        // enable option menu
-        setHasOptionsMenu(true)
-        return binding.root
-    }
-
-    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        super.onCreateOptionsMenu(menu, inflater)
-        inflater.inflate(R.menu.logout_menu, menu)
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        findNavController().navigate(ProductListFragmentDirections.actionProductListFragmentToLoginFragment())
-        return super.onOptionsItemSelected(item)
     }
 
     private fun changeIndicatorColor(index: Int, iv1: ImageView, iv2: ImageView, iv3: ImageView) {

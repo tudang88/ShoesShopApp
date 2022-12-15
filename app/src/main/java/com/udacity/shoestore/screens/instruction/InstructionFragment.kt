@@ -9,6 +9,7 @@ import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.viewpager2.widget.ViewPager2
 import com.udacity.shoestore.R
+import com.udacity.shoestore.adapter.InstructionPageAdapter
 import com.udacity.shoestore.databinding.FragmentInstructionBinding
 import com.udacity.shoestore.models.InstructionPageData
 
@@ -56,12 +57,12 @@ class InstructionFragment : Fragment() {
                 positionOffsetPixels: Int
             ) {
                 super.onPageScrolled(position, positionOffset, positionOffsetPixels)
-                changeColor()
+                changeIndicatorColor()
             }
 
             override fun onPageScrollStateChanged(state: Int) {
                 super.onPageScrollStateChanged(state)
-                changeColor()
+                changeIndicatorColor()
             }
 
         })
@@ -80,7 +81,7 @@ class InstructionFragment : Fragment() {
         return super.onOptionsItemSelected(item)
     }
 
-    private fun changeColor() {
+    private fun changeIndicatorColor() {
         when (viewPager2.currentItem) {
             0 -> {
                 iv1.setBackgroundColor(resources.getColor(R.color.active))

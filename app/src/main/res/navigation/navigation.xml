@@ -61,5 +61,8 @@
         <action
             android:id="@+id/action_addProductFragment_to_loginFragment"
             app:destination="@id/loginFragment" />
+        <action
+            android:id="@+id/action_addProductFragment_to_productListFragment"
+            app:destination="@id/productListFragment" />
     </fragment>
 </navigation>

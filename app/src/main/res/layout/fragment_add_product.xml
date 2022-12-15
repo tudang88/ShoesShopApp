@@ -26,6 +26,7 @@
             app:srcCompat="@drawable/logo" />
 
         <include
+            android:id="@+id/prd_component"
             layout="@layout/add_product_component"
             android:layout_width="0dp"
             android:layout_height="0dp"

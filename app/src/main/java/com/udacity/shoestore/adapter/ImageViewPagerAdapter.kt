@@ -1,4 +1,4 @@
-package com.udacity.shoestore.screens.productlist
+package com.udacity.shoestore.adapter
 
 import android.view.LayoutInflater
 import android.view.View
@@ -6,9 +6,10 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import com.udacity.shoestore.R
+import com.udacity.shoestore.models.ImageResource
 
-class ProductPageAdapter(private val imgResList: List<Int>) :
-    RecyclerView.Adapter<ProductPageAdapter.ViewHolder>() {
+class ImageViewPagerAdapter(private val imgResList: MutableList<ImageResource>) :
+    RecyclerView.Adapter<ImageViewPagerAdapter.ViewHolder>() {
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val imgView: ImageView = itemView.findViewById(R.id.prd_image)
     }
@@ -21,10 +22,24 @@ class ProductPageAdapter(private val imgResList: List<Int>) :
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val curImgRes = imgResList[position]
-        holder.imgView.setImageResource(curImgRes)
+        if (curImgRes.resId != null) {
+            holder.imgView.setImageResource(curImgRes.resId)
+        } else if (curImgRes.uri != null) {
+            holder.imgView.setImageURI(curImgRes.uri)
+        } else {
+            holder.imgView.setImageResource(R.drawable.rectangle_box)
+        }
     }
 
     override fun getItemCount(): Int {
         return imgResList.size
+    }
+
+    /**
+     * add Image to current List
+     */
+    fun addImage(imgRes: ImageResource) {
+        imgResList.add(imgRes)
+        notifyDataSetChanged()
     }
 }
