@@ -7,7 +7,7 @@
     android:background="?attr/colorPrimary"
     android:padding="16dp"
     android:theme="@style/ThemeOverlay.AppCompat.Dark">
-
+    <!-- simple header for drawer menu-->
     <ImageView
         android:id="@+id/navHeaderImage"
         android:layout_width="0dp"

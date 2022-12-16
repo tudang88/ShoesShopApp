@@ -3,12 +3,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.udacity.shoestore.screens.login.LoginFragment">
-
+    <!-- The info input by user will be bound to loginViewModel-->
     <data>
+        <!-- This is a share view model, and will be refer on welcome fragment-->
         <variable
             name="loginViewModel"
             type="com.udacity.shoestore.models.LoginViewModel" />
     </data>
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/loginConstraint"
         android:layout_width="match_parent"
@@ -75,8 +77,8 @@
             style="@style/button_positive"
             android:layout_marginTop="40dp"
             android:layout_marginEnd="@dimen/button_horizontal_margin"
-            android:text="Register"
             android:onClick="@{() -> loginViewModel.authentication()}"
+            android:text="Register"
             app:layout_constraintEnd_toStartOf="@+id/guideline3"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
@@ -88,8 +90,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/button_horizontal_margin"
-            android:text="Login"
             android:onClick="@{() -> loginViewModel.authentication()}"
+            android:text="Login"
             app:layout_constraintBaseline_toBaselineOf="@+id/registerButton"
             app:layout_constraintStart_toStartOf="@+id/guideline3" />
 

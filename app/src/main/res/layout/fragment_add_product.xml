@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".screens.addproduct.AddProductFragment">
-
+    <!-- Main layout for add new product details-->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/add_product_constraint"
         android:layout_width="match_parent"
@@ -24,7 +24,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/logo" />
-
+        <!-- The product information input form is design in separate layout -->
         <include
             android:id="@+id/prd_component"
             layout="@layout/add_product_component"

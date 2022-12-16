@@ -63,7 +63,9 @@ class AddProductFragment : Fragment() {
         }
         // button save
         binding.saveButton.setOnClickListener { view ->
+            // share new product to shareViewModel
             sharedViewModel.addNewProduct(viewModel.productEntry)
+            // navigate back to product list page
             view.findNavController()
                 .navigate(AddProductFragmentDirections.actionAddProductFragmentToProductListFragment())
         }

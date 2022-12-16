@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.udacity.shoestore.screens.welcome.WelcomeFragment">
-
+    <!-- The welcome fragment will use user info from share login view model to show greeting message-->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/welcomeConstraint"
         android:layout_width="match_parent"

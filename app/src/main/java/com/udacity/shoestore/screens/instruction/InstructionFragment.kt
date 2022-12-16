@@ -5,12 +5,14 @@ import android.view.*
 import androidx.fragment.app.Fragment
 import android.widget.ImageView
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.viewpager2.widget.ViewPager2
 import com.udacity.shoestore.R
 import com.udacity.shoestore.adapter.InstructionPageAdapter
 import com.udacity.shoestore.databinding.FragmentInstructionBinding
 import com.udacity.shoestore.models.InstructionPageData
+import com.udacity.shoestore.models.InstructionViewModel
 
 /**
  * A simple [Fragment] subclass.
@@ -22,6 +24,7 @@ class InstructionFragment : Fragment() {
     private lateinit var iv2: ImageView
     private lateinit var iv3: ImageView
     private lateinit var viewPager2: ViewPager2
+    private lateinit var viewModel: InstructionViewModel
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -39,13 +42,9 @@ class InstructionFragment : Fragment() {
         iv1 = binding.iv1
         iv2 = binding.iv2
         iv3 = binding.iv3
-        val itemList = listOf(
-            InstructionPageData(R.drawable.shop_img, "Tracking your available items"),
-            InstructionPageData(R.drawable.profile_page, "View personal profile"),
-            InstructionPageData(R.drawable.add_item, "Add new item")
-        )
+        viewModel = ViewModelProvider(this).get(InstructionViewModel::class.java)
         // create adapter
-        val adapter = InstructionPageAdapter(itemList)
+        val adapter = InstructionPageAdapter(viewModel.instructionPages)
         // hook adapter to view pager
         viewPager2.adapter = adapter
         // setting callback for coloring indicator
