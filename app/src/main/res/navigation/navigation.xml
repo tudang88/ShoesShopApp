@@ -26,9 +26,6 @@
             app:destination="@id/instructionFragment"
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left" />
-        <argument
-            android:name="userName"
-            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/instructionFragment"

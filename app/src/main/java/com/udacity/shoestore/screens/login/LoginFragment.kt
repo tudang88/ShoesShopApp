@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
@@ -22,7 +23,7 @@ import com.udacity.shoestore.models.LoginViewModel
  */
 class LoginFragment : Fragment() {
 
-    private lateinit var viewModel: LoginViewModel
+    private  val viewModel: LoginViewModel by activityViewModels()
     private lateinit var binding: FragmentLoginBinding
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -31,7 +32,6 @@ class LoginFragment : Fragment() {
         // Inflate the layout for this fragment
         binding =
             DataBindingUtil.inflate(inflater, R.layout.fragment_login, container, false)
-        viewModel = ViewModelProvider(this).get(LoginViewModel::class.java)
         binding.lifecycleOwner = this
         // binding viewModel instance with variable in layout
         binding.loginViewModel = viewModel
@@ -57,7 +57,7 @@ class LoginFragment : Fragment() {
     private fun loginSuccessful() {
         Log.i("LoginFragment", "loginSuccessful")
         val action =
-            LoginFragmentDirections.actionLoginFragmentToWelcomeFragment(viewModel.userName)
+            LoginFragmentDirections.actionLoginFragmentToWelcomeFragment()
         findNavController().navigate(action)
     }
 
